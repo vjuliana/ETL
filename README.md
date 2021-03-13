@@ -1,9 +1,11 @@
 # ETL Project Report
 
 ## Extract
+The first dataset we extracted was student enrolment data from the Australian Bureau of Statistics website. Under the category of 'Education and Work' (Catalogue number 6227.0), we downloaded an excel file titled 'Table 21 Current study: Persons aged 15-64 years - 2004-2020, Excel Data Table' (https://www.abs.gov.au/statistics/people/education/education-and-work-australia/may-2020#data-download). This excel workbook contained individual worksheets for each of the years from 2004 to 2020 detailing the enrolment numbers, broken down into different age groups and by each region (state or territory) in Australia. A summary worksheet in the workbook containing totals for all of the years was sufficient for the purposes of our project, so this was the worksheet that we would focus on.
 
+The second dataset we extracted was net overseas migration data, which we also sourced from the ABS website under the category of 'Migration, Australia' (Catalogue number 3412.0). We used the ABS.Stat system to download a csv file of net overseas migration data for Australia from 2004 to 2020 (http://stat.data.abs.gov.au/Index.aspx?DatasetCode=NETOVERSEASMIGRATION_CY#). This csv file contained net overseas migration totals for each Australian region broken down by year, sex and age, and separated by migration type.
 
 ## Transform
-
+We read the excel file containing the student enrolment data with pandas library in order to clean and transform the data to ensure it was suited for our purposes. The worksheet relevant to our project contained a lot of extraneous information, so we began the process by dropping any rows or columns with irrelevant data or information. At this point the data was still in a format that would be ill-suited to any form of join or merge with the migration data as it was wide rather than long, so we had to transform it. Using pandas and the multi index and stack functions we were able to reshape the data from wide to long. To finish the transformation of the enrolment data we performed several functions to clean it up, such as renaming columns and using lambda to change the Dtype of the data and ensure it reflected the correct total.
 
 ## Load
